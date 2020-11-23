@@ -11,7 +11,7 @@ app.use(cors());
 
 app.post('/exploit', (req, res) => {
   console.log(req.body);
-  const payload = { success: true };
+  const payload = { success: true, data: {} };
   res.send(payload);
 });
 
