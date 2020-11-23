@@ -13,8 +13,12 @@ router.post('/exploit', async (req, res, next) => {
     return next();
   }
 
-  const payload = { success: true, data: {} };
-  res.send(payload);
+  const result = await LFIExploit.run();
+  res.send({
+    success: !result.hasError,
+    data: { ...result }
+  });
+  next();
 });
 
 module.exports = router;
